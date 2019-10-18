@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jorgeramirez/cs-gym/issues"
   },
-  "homepage": "https://github.com/jorgeramirez/cs-gym#readme"
+  "homepage": "https://github.com/jorgeramirez/cs-gym#readme",
+  "dependencies": {
+    "jest": "^24.9.0"
+  }
 }
