@@ -36,7 +36,7 @@ def river_sizes(matrix):
                     and tmp_matrix[i][left] != tmp_matrix[top][j]\
                     and tmp_matrix[i][left] != -1\
                     and tmp_matrix[top][j] != -1:
-                # we found two rivers with a common node, then we merge them and
+                # we found two rivers with a common node, so we merge them and
                 # unify the cells in the tmp_matrix
                 r1_idx = tmp_matrix[i][left]
                 r2_idx = tmp_matrix[top][j]
@@ -47,7 +47,7 @@ def river_sizes(matrix):
 
                 for cell in rivers[r1_idx]:
                     tmp_matrix[cell[0]][cell[1]] = r1_idx
-                tmp_matrix[i][j] = r1_idx                    
+                tmp_matrix[i][j] = r1_idx
                 rivers[r1_idx].append((i, j))
             elif left >= 0 and matrix[i][left] + matrix[i][j] == 2:
                 tmp_matrix[i][j] = tmp_matrix[i][left]
