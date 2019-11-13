@@ -87,7 +87,7 @@ def largest_range_v2(array):
     numbers = {}
     for n in array:
         numbers[n] = True
-    longest_range = 0
+    best_range_length = 0
     best_range = []
 
     for n in array:
@@ -105,8 +105,8 @@ def largest_range_v2(array):
             current_range += 1
         right -= 1
 
-        if current_range > longest_range:
-            longest_range = current_range
+        if current_range > best_range_length:
+            best_range_length = current_range
             best_range = [left, right]
     return best_range
 
