@@ -77,5 +77,12 @@ def largest_range_v1(array):
     return range_found
 
 
+def largest_range_v2(array):
+    """
+    This alternative does not sort the input array.
+    """
+    pass
+
+
 def largestRange(array):
     return largest_range_v1(array)
