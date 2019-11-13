@@ -80,9 +80,37 @@ def largest_range_v1(array):
 def largest_range_v2(array):
     """
     This alternative does not sort the input array.
+
+    Iterate over the array and navigate each number to the left and right as much as possible. And 
+    return the largest expansion.
     """
-    pass
+    numbers = {}
+    for n in array:
+        numbers[n] = True
+    longest_range = 0
+    best_range = []
+
+    for n in array:
+        left = n - 1
+        current_range = 1
+
+        while numbers.get(left, False):
+            left -= 1
+            current_range += 1
+        left += 1
+        right = n + 1
+
+        while numbers.get(right, False):
+            right += 1
+            current_range += 1
+        right -= 1
+
+        if current_range > longest_range:
+            longest_range = current_range
+            best_range = [left, right]
+    return best_range
 
 
 def largestRange(array):
-    return largest_range_v1(array)
+    # return largest_range_v1(array)
+    return largest_range_v2(array)
