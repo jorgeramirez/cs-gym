@@ -1,5 +1,6 @@
 # https://leetcode.com/problems/reverse-integer
 
+
 def reverse_number(x):
     x_reversed = ""
     x_str = str(x)
@@ -17,7 +18,6 @@ def reverse_number(x):
     if x_reversed_int < lower_bound or x_reversed_int > upper_bound:
         return 0
     return x_reversed_int
-
 
 
 class Solution:

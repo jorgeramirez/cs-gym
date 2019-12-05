@@ -17,4 +17,8 @@ Sample output: 93 (Buy: 5, Sell: 11; Buy: 3, Sell: 90)
 
 def maxProfitWithKTransactions(prices, k):
     # Write your code here.
+    # IDEA: determine the "profit ranges". A profit range is a segment that keeps going up every single day
+    # based on how many profit ranges we have, we split these so that we meet the K transactions
+    # if profit ranges = 1 and K=2 then we split the profit ranges in half and just pick the first and last points of each partition :)
+    # in the example we have profit ranges = 2 and k = 2, that's why we return (5, 11) and (3, 90) because these are the min and max points in each profit range.
     pass
