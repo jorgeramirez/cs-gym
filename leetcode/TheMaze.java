@@ -32,6 +32,8 @@ public class TheMaze {
         Queue<Position> queue = new LinkedList<>();
         HashMap<String, Boolean> visitedPositions = new HashMap<>();
         Maze maze = new Maze(inputMaze);
+        Position start = new Position(rowStart, rowDest);
+        queue.add(start);
         Position current;
 
         while (!queue.isEmpty()) {
@@ -45,7 +47,7 @@ public class TheMaze {
                     return true;
                 }
 
-                if (!visitedPositions.containsKey(posLanded.getKey())) {
+                if (!visitedPositions.getOrDefault(posLanded.getKey(), false)) {
                     queue.add(posLanded);
                     visitedPositions.put(posLanded.getKey(), true);
                 }
@@ -59,7 +61,7 @@ public class TheMaze {
         List<Position> neighbors = new ArrayList<>();
 
         for (Position pos : current.getNeighbors()) {
-            if (maze.isPositionValid(pos) && visitedPositions.getOrDefault(pos.getKey(), false)) {
+            if (maze.isPositionValid(pos) && !visitedPositions.getOrDefault(pos.getKey(), false)) {
                 neighbors.add(pos);
             }
         }
@@ -69,7 +71,7 @@ public class TheMaze {
     private Position roll(Position pos, Maze maze) {
         Position current = pos;
 
-        while (!maze.isPositionValid(current)) {
+        while (maze.isPositionValid(current)) {
 
             if (current.direction == LEFT) {
                 current = current.getLeft();
@@ -155,5 +157,33 @@ public class TheMaze {
             // is valid if is not a wall
             return boundariesOk && maze[pos.row][pos.col] == NO_WALL;
         }
+    }
+
+
+    public static void main(String[] args) {
+        TheMaze s = new TheMaze();
+        // this one should return true
+        int[][] maze = new int[][]{
+                new int[]{1, 1, 1, 1, 1, 1, 1},
+                new int[]{1, 0, 0, 1, 0, 0, 1},
+                new int[]{1, 0, 0, 0, 0, 0, 1},
+                new int[]{1, 0, 0, 0, 1, 0, 1},
+                new int[]{1, 1, 1, 0, 1, 1, 1},
+                new int[]{1, 0, 0, 0, 0, 0, 1},
+                new int[]{1, 1, 1, 1, 1, 1, 1},
+        };
+        System.out.println(s.solve(maze, 0 + 1, 4 + 1, 4 + 1, 4 + 1));
+
+        // this one should return false
+        maze = new int[][]{
+                new int[]{1, 1, 1, 1, 1, 1, 1},
+                new int[]{1, 0, 0, 1, 0, 0, 1},
+                new int[]{1, 0, 0, 0, 0, 0, 1},
+                new int[]{1, 0, 0, 0, 1, 0, 1},
+                new int[]{1, 1, 1, 0, 1, 1, 1},
+                new int[]{1, 0, 0, 0, 0, 0, 1},
+                new int[]{1, 1, 1, 1, 1, 1, 1},
+        };
+        System.out.println(s.solve(maze, 0 + 1, 4 + 1, 3 + 1, 2 + 1));
     }
 }
