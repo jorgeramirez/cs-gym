@@ -71,8 +71,8 @@ public class GroupAnagrams {
         // 2) we create a hash map <String, List<String>>. key=group id, value the members of the group
         // 3) we iterate over the input list to build the hashmap
         // 4) we return the values of the hashmap
-        // Time: O(N log N) because we sort
-        // Space: O(N)
+        // Time: O(N Klog K) because we sort. K is the length of the longest member of strs[]
+        // Space: O(NK)
         Hashtable<String, List<String>> groups = new Hashtable<>();
 
         for (String str : strs) {
