@@ -1,6 +1,7 @@
 // https://leetcode.com/discuss/interview-question/383669/
 public class MaxOfMinAltitudes {
 
+    // I could further improve this by using an array B of size A[0].length instead of a matrix.
     public int maxOfMinAltitues(int[][] A) {
         int[][] B = new int[A.length][A[0].length];
 
